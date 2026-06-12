@@ -56,11 +56,21 @@ function getAIClient() {
 }
 
 const app = express();
+
+// 安全：隐藏技术栈标识
+app.disable('x-powered-by');
+
 app.use(cors());
 app.use(express.json());
 
 // 静态文件服务（前端页面）
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+// 安全：错误信息脱敏，不泄露 API Key
+function sanitizeError(err) {
+  const msg = (err.message || '') + ' ' + (err.response?.body || err.response?.data || '');
+  return msg.replace(/sk-[a-zA-Z0-9]{20,}/g, 'sk-***REDACTED***');
+}
 
 // ===== API 路由 =====
 
@@ -132,13 +142,9 @@ app.post('/api/predict', async (req, res) => {
 
     res.json(prediction);
   } catch (err) {
-    console.error('预测失败:', err.message, err.status, err.code);
-    if (err.response) {
-      console.error('DeepSeek error body:', JSON.stringify(err.response.body || err.response.data || {}).substring(0, 500));
-    }
+    console.error('预测失败:', sanitizeError(err));
     res.status(500).json({
       error: '预测服务暂时不可用，请稍后重试',
-      detail: err.message,
     });
   }
 });
@@ -243,8 +249,8 @@ app.post('/api/intelligence/refresh', async (req, res) => {
 
     res.json({ success: true, date: getIntelligenceDate(), content: newIntel });
   } catch (err) {
-    console.error('情报更新失败:', err.message);
-    res.status(500).json({ error: '情报更新失败', detail: err.message });
+    console.error('情报更新失败:', sanitizeError(err));
+    res.status(500).json({ error: '情报更新失败' });
   }
 });
 
@@ -289,9 +295,17 @@ async function autoRefreshIntelligence() {
       console.log('📰 自动更新生成内容不符合要求，跳过');
     }
   } catch (err) {
-    console.error('📰 自动更新失败:', err.message);
+    console.error('📰 自动更新失败:', sanitizeError(err));
   }
 }
+
+// 安全：自定义 404 — 不暴露技术栈
+app.use((req, res) => {
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: '接口不存在' });
+  }
+  res.status(404).sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
 
 // 获取所有对阵信息
 app.get('/api/matches', (req, res) => {

@@ -134,7 +134,8 @@ async function main() {
     fs.writeFileSync(INTEL_PATH, newIntel, 'utf-8');
     log(`✅ 情报更新成功: ${today} (${newIntel.length} 字符)`);
   } catch (err) {
-    log(`❌ 更新失败: ${err.message}`);
+    const safeMsg = (err.message || '').replace(/sk-[a-zA-Z0-9]{20,}/g, 'sk-***');
+    log(`❌ 更新失败: ${safeMsg}`);
   }
 }
 
