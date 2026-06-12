@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "world2026",
+      "script": "server.js",
+      "cwd": "./backend",
+      "env": {
+        "PORT": 3001
+      },
+      "instances": 1,
+      "autorestart": true,
+      "max_restarts": 10,
+      "restart_delay": 5000
+    }
+  ]
+}

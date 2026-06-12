@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== SEO 基础 ===== -->
+  <title>⚽ 球场八爪鱼 · 2026世界杯AI预测引擎 | AI智能预测 48队 64场比赛</title>
+  <meta name="description" content="2026 FIFA世界杯AI智能预测引擎，基于DeepSeek大模型，覆盖48支参赛球队、12个小组、64场比赛。四维评估方法论（近期状态40%+硬实力30%+历史交锋15%+情境因素15%），严格JSON输出，免费使用。">
+  <meta name="keywords" content="2026世界杯,世界杯预测,AI预测,足球预测,世界杯AI,DeepSeek,球场八爪鱼,世界杯赛程,48队,FIFA World Cup 2026">
+  <meta name="author" content="球场八爪鱼">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="theme-color" content="#0a5e2e">
+  <link rel="canonical" href="https://world2026.liubaizhiying.cn/">
+
+  <!-- ===== Open Graph (Facebook/LinkedIn) ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="⚽ 球场八爪鱼 · 2026世界杯AI预测引擎">
+  <meta property="og:description" content="AI驱动的2026世界杯预测平台，48支球队完整资料库，4维评估模型，免费精准预测每场比赛。">
+  <meta property="og:url" content="https://world2026.liubaizhiying.cn/">
+  <meta property="og:site_name" content="球场八爪鱼">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- ===== Twitter Card ===== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="⚽ 球场八爪鱼 · 2026世界杯AI预测引擎">
+  <meta name="twitter:description" content="AI驱动的2026世界杯预测平台，48支球队完整资料库，4维评估模型，免费精准预测每场比赛。">
+
+  <!-- ===== 结构化数据 JSON-LD ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "球场八爪鱼",
+    "url": "https://world2026.liubaizhiying.cn/",
+    "description": "2026 FIFA世界杯AI智能预测引擎，基于DeepSeek大模型驱动比赛预测分析。",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "All",
+    "author": { "@type": "Organization", "name": "球场八爪鱼" },
+    "inLanguage": "zh-CN",
+    "about": {
+      "@type": "SportsEvent",
+      "name": "2026 FIFA World Cup",
+      "startDate": "2026-06-11",
+      "endDate": "2026-07-19",
+      "location": {
+        "@type": "Place",
+        "name": "美国·加拿大·墨西哥",
+        "address": { "@type": "PostalAddress", "addressCountry": "US,CA,MX" }
+      }
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="preload" href="/js/app.js" as="script">
+</head>
+<body>
+  <!-- 粒子背景 Canvas -->
+  <canvas id="particlesCanvas"></canvas>
+
+  <!-- 主容器 -->
+  <div class="app-container">
+
+    <!-- ===== 顶部导航 ===== -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">⚽</span>
+          <div class="logo-text">
+            <h1>球场八爪鱼</h1>
+            <span class="logo-subtitle">World Cup 2026 AI Prediction</span>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#predict" class="nav-link active">单场预测</a>
+          <a href="#groups" class="nav-link">分组情况</a>
+          <a href="#about" class="nav-link">关于引擎</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===== 英雄区 ===== -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span> AI 驱动 · 48 队资料库锁死
+        </div>
+        <h2 class="hero-title">
+          绿茵场上<span class="text-gradient">神算子</span>
+        </h2>
+        <p class="hero-desc">
+          基于 DeepSeek-V4-Pro 大模型，融合 4 维评估方法论（近期状态 40% + 硬实力 30% + 历史交锋 15% + 情境因素 15%），
+          严格 JSON 输出，零编造、零幻觉，为球迷提供专业级比赛预测分析。
+        </p>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-number">48</span>
+            <span class="stat-label">参赛球队</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">64</span>
+            <span class="stat-label">场比赛</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">12</span>
+            <span class="stat-label">个小组</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">3</span>
+            <span class="stat-label">东道主国</span>
+          </div>
+        </div>
+        <div class="intel-badge" id="intelBadge">
+          <span class="intel-dot"></span>
+          <span id="intelText">情报加载中...</span>
+        </div>
+        <div class="countdown-section" id="countdownSection">
+          <div class="countdown-title" id="countdownTitle">🏟️ 揭幕战倒计时 · 墨西哥 vs 南非 · 阿兹特克球场</div>
+          <div class="countdown-timer" id="countdownTimer">
+            <div class="countdown-block"><span class="countdown-val" id="cd-days">0</span><span class="countdown-unit">天</span></div>
+            <div class="countdown-block"><span class="countdown-val" id="cd-hours">0</span><span class="countdown-unit">时</span></div>
+            <div class="countdown-block"><span class="countdown-val" id="cd-mins">0</span><span class="countdown-unit">分</span></div>
+            <div class="countdown-block"><span class="countdown-val" id="cd-secs">0</span><span class="countdown-unit">秒</span></div>
+          </div>
+        </div>
+        <a href="#predict" class="btn-predict-large">
+          ⚽ 开始预测
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== 预测区 ===== -->
+    <section class="predict-section" id="predict">
+      <div class="section-header">
+        <span class="section-icon">🔮</span>
+        <h2 class="section-title">AI 预测中心</h2>
+        <p class="section-desc">选择两支球队和比赛阶段，AI 即刻给出专业分析</p>
+      </div>
+
+      <div class="predict-panel">
+        <!-- 球队选择 -->
+        <div class="match-selector">
+          <div class="team-pick team-pick-a">
+            <div class="team-pick-badge">主队</div>
+            <select id="teamASelect" class="team-select">
+              <option value="">选择球队...</option>
+            </select>
+            <div class="team-flag" id="teamAFlag"></div>
+          </div>
+
+          <div class="vs-divider">
+            <span class="vs-text">VS</span>
+          </div>
+
+          <div class="team-pick team-pick-b">
+            <div class="team-pick-badge away">客队</div>
+            <select id="teamBSelect" class="team-select">
+              <option value="">选择球队...</option>
+            </select>
+            <div class="team-flag" id="teamBFlag"></div>
+          </div>
+
+          <div class="stage-pick">
+            <label class="stage-label">比赛阶段</label>
+            <select id="stageSelect" class="stage-select">
+              <option value="小组赛">小组赛</option>
+              <option value="32强">32强</option>
+              <option value="16强">16强</option>
+              <option value="8强">8强</option>
+              <option value="半决赛">半决赛</option>
+              <option value="决赛">决赛</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="predictBtn" class="btn-predict" disabled>
+          <span class="btn-icon">🔮</span> 开始预测
+        </button>
+
+        <!-- 加载动画 -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+          <div class="loading-content">
+            <div class="loading-ball"></div>
+            <p class="loading-text">AI 正在分析两队数据...</p>
+            <p class="loading-hint">综合近期状态、硬实力、历史交锋、情境因素</p>
+          </div>
+        </div>
+
+        <!-- 预测结果卡片 -->
+        <div id="predictionResult" class="prediction-result hidden">
+          <div class="result-header">
+            <span class="result-badge" id="resultConfidence">高置信度</span>
+            <span class="result-stage" id="resultStage">小组赛</span>
+          </div>
+
+          <div class="scoreboard">
+            <div class="team team-a">
+              <div class="team-name" id="resultTeamA">墨西哥</div>
+              <div class="team-flag-lg" id="flagA">🇲🇽</div>
+              <div class="win-bar">
+                <div class="win-bar-fill win-bar-a" id="barA" style="width:70%"></div>
+              </div>
+              <div class="win-prob">
+                <span class="prob-num" id="probA">70</span>
+                <span class="prob-unit">% 胜率</span>
+              </div>
+            </div>
+
+            <div class="score-center">
+              <div class="score-display" id="predictedScore">2-0</div>
+              <div class="draw-info">
+                <span class="draw-label">平局</span>
+                <span class="draw-num" id="drawProb">20</span>
+                <span class="draw-pct">%</span>
+              </div>
+            </div>
+
+            <div class="team team-b">
+              <div class="team-name" id="resultTeamB">南非</div>
+              <div class="team-flag-lg" id="flagB">🇿🇦</div>
+              <div class="win-bar">
+                <div class="win-bar-fill win-bar-b" id="barB" style="width:10%"></div>
+              </div>
+              <div class="win-prob">
+                <span class="prob-num" id="probB">10</span>
+                <span class="prob-unit">% 胜率</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 关键因素 -->
+          <div class="key-factors">
+            <h4>⚡ 关键判断因素</h4>
+            <div class="factors-list" id="keyFactors"></div>
+          </div>
+
+          <!-- 分析 -->
+          <div class="analysis-block">
+            <h4>🎙️ AI 解说分析</h4>
+            <p id="analysisText"></p>
+          </div>
+
+          <!-- 关键球员 -->
+          <div class="players-block">
+            <h4>⭐ 关键先生</h4>
+            <div class="players-grid" id="playersToWatch"></div>
+          </div>
+        </div>
+
+        <!-- 错误提示 -->
+        <div id="errorMessage" class="error-message hidden">
+          <span class="error-icon">⚠️</span>
+          <span id="errorText"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 分组展示 ===== -->
+    <section class="groups-section" id="groups">
+      <div class="section-header">
+        <span class="section-icon">🏟️</span>
+        <h2 class="section-title">12 组 · 48 队全景</h2>
+        <p class="section-desc">美国 · 加拿大 · 墨西哥三国联办</p>
+      </div>
+      <div class="groups-grid" id="groupsGrid">
+        <!-- JS 动态填充 -->
+      </div>
+    </section>
+
+    <!-- ===== 关于引擎 ===== -->
+    <section class="about-section" id="about">
+      <div class="section-header">
+        <span class="section-icon">🧠</span>
+        <h2 class="section-title">引擎架构 · 四层约束</h2>
+        <p class="section-desc">一份 system prompt = 一个垂类 AI 专家</p>
+      </div>
+
+      <div class="architecture-grid">
+        <div class="arch-card">
+          <div class="arch-card-num">01</div>
+          <h3>📚 资料库锁死</h3>
+          <p>48 队完整资料写死在 prompt 内，模型只许引用、严禁编造。覆盖核心球员、教练、隐忧、历史底蕴。</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-num">02</div>
+          <h3>📐 4维方法论</h3>
+          <p>近期状态 40% + 硬实力 30% + 历史交锋 15% + 情境因素 15%，胜率上限锁死 85%，杜绝极端预测。</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-num">03</div>
+          <h3>📦 严格 JSON 契约</h3>
+          <p>字段类型、长度、取值范围全部锁死，前端可直接渲染，零后处理，杜绝格式飘忽不定。</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-card-num">04</div>
+          <h3>🔄 每日情报热更新</h3>
+          <p>第六节动态覆盖位，30行伤停更新即可全 Skill 即时跟进，动静分离，资料库稳定性保证。</p>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <h4>⚠️ 免责声明</h4>
+        <p>本项目仅供娱乐与球迷讨论，预测结果不构成任何参考依据。引擎内置红线——严禁输出任何投注、赔率、下注建议。足球的魅力在于它的不可预测性，请理性看球，享受比赛。</p>
+      </div>
+    </section>
+
+    <!-- ===== 页脚 ===== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span>⚽</span>
+          <span>球场八爪鱼 · World Cup 2026 AI Prediction Engine</span>
+        </div>
+        <div class="footer-links">
+          <span>Powered by DeepSeek-V4-Pro</span>
+          <span class="footer-dot">·</span>
+          <span>MIT License</span>
+          <span class="footer-dot">·</span>
+          <span>Based on <a href="https://github.com/TradingAi666/worldcup2026-prediction-skill" target="_blank" rel="noopener">worldcup2026-prediction-skill</a></span>
+        </div>
+        <div class="footer-icp">
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">滇ICP备2026009400号-1</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://world2026.liubaizhiying.cn/sitemap.xml
+
+Host: https://world2026.liubaizhiying.cn

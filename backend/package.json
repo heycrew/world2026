@@ -1,0 +1,16 @@
+{
+  "name": "worldcup2026-prediction",
+  "version": "1.0.0",
+  "description": "球场八爪鱼 · 2026世界杯AI预测引擎",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "openai": "^4.77.0",
+    "dotenv": "^16.4.7"
+  }
+}
