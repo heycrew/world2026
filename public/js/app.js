@@ -230,8 +230,14 @@ async function fetchIntelligence() {
     if (data.date && data.date !== '未知') {
       const today = new Date().toISOString().split('T')[0];
       const isFresh = data.date >= today;
-      intelText.textContent = `📰 每日情报：${data.date} ${isFresh ? '✅ 最新' : '⚠️ 待更新'}`;
+      const resultsCount = (data.results && data.results.length) || 0;
+      let statusText = `📰 情报 ${data.date} ${isFresh ? '✅' : '⚠️'} | ${resultsCount}场赛果已确认`;
+      if (data.upcoming && data.upcoming.today && data.upcoming.today.length > 0) {
+        statusText += ` | 今日: ${data.upcoming.today.length}场`;
+      }
+      intelText.textContent = statusText;
       if (!isFresh) intelDot.classList.add('stale');
+      else intelDot.classList.remove('stale');
     } else {
       intelText.textContent = '📰 每日情报：加载中...';
     }
@@ -268,13 +274,15 @@ function renderGroups() {
 
 // ========== 赛事倒计时 ==========
 function startCountdown() {
+  const TOURNAMENT_START = new Date('2026-06-11T12:00:00-06:00');
   const GROUPS_END = new Date('2026-06-28T00:00:00-06:00');
   const FINAL = new Date('2026-07-19T12:00:00-06:00');
 
   function getTarget() {
     const now = new Date();
-    if (now < GROUPS_END) return { date: GROUPS_END, title: '🏟️ 小组赛阶段 · 32强即将揭晓' };
-    return { date: FINAL, title: '🏆 世界杯决赛倒计时 · 冠军之战' };
+    if (now < TOURNAMENT_START) return { date: TOURNAMENT_START, title: '🏟️ 揭幕战倒计时 · 墨西哥 vs 南非 · 阿兹特克球场', phase: 'pre' };
+    if (now < GROUPS_END) return { date: GROUPS_END, title: '🏟️ 小组赛进行中 · 32强即将揭晓', phase: 'groups' };
+    return { date: FINAL, title: '🏆 世界杯决赛倒计时 · 冠军之战', phase: 'knockout' };
   }
 
   function update() {

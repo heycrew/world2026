@@ -1,0 +1,31 @@
+{
+  "lastUpdated": "2026-06-16",
+  "matches": [
+    { "date": "2026-06-11", "group": "A", "teamA": "墨西哥", "teamB": "南非", "scoreA": 2, "scoreB": 0, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-11", "group": "A", "teamA": "韩国", "teamB": "捷克", "scoreA": 2, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-12", "group": "B", "teamA": "加拿大", "teamB": "波黑", "scoreA": 1, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-12", "group": "D", "teamA": "美国", "teamB": "巴拉圭", "scoreA": 4, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-13", "group": "C", "teamA": "巴西", "teamB": "摩洛哥", "scoreA": 1, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-13", "group": "C", "teamA": "海地", "teamB": "苏格兰", "scoreA": 0, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-13", "group": "B", "teamA": "卡塔尔", "teamB": "瑞士", "scoreA": 1, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-13", "group": "D", "teamA": "澳大利亚", "teamB": "土耳其", "scoreA": 2, "scoreB": 0, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-14", "group": "E", "teamA": "德国", "teamB": "库拉索", "scoreA": 7, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-14", "group": "F", "teamA": "荷兰", "teamB": "日本", "scoreA": 2, "scoreB": 2, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-14", "group": "E", "teamA": "科特迪瓦", "teamB": "厄瓜多尔", "scoreA": 1, "scoreB": 0, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-14", "group": "F", "teamA": "瑞典", "teamB": "突尼斯", "scoreA": 5, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-15", "group": "H", "teamA": "西班牙", "teamB": "佛得角", "scoreA": 0, "scoreB": 0, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-15", "group": "G", "teamA": "比利时", "teamB": "埃及", "scoreA": 1, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-15", "group": "H", "teamA": "沙特", "teamB": "乌拉圭", "scoreA": 1, "scoreB": 1, "stage": "小组赛", "round": 1 },
+    { "date": "2026-06-15", "group": "G", "teamA": "伊朗", "teamB": "新西兰", "scoreA": 2, "scoreB": 2, "stage": "小组赛", "round": 1 }
+  ],
+  "highlights": [
+    "🔥 平局潮：16场比赛中8场平局（50%），B/G/H三组四队全平各积1分",
+    "🇩🇪 德国7-1库拉索：哈弗茨双响，创本届最大比分",
+    "🇪🇸 西班牙0-0佛得角：欧洲冠军被世界杯新军逼平，本届最大冷门",
+    "🇯🇵 日本2-2荷兰：镰田大地89分钟绝平，亚洲球队韧性拉满",
+    "🌏 亚洲球队不败：韩国、卡塔尔、澳大利亚、日本、沙特、伊朗首轮全不败",
+    "🇺🇸 美国4-1巴拉圭：东道主强势开门红，巴洛贡梅开二度",
+    "🇧🇷 巴西1-1摩洛哥：维尼修斯扳平，巴西慢热起步",
+    "🇶🇦 卡塔尔1-1瑞士：卡塔尔队史世界杯首个积分"
+  ]
+}
