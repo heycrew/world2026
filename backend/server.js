@@ -503,14 +503,6 @@ app.delete('/api/results', (req, res) => {
   }
 });
 
-// 安全：自定义 404 — 不暴露技术栈
-app.use((req, res) => {
-  if (req.path.startsWith('/api/')) {
-    return res.status(404).json({ error: '接口不存在' });
-  }
-  res.status(404).sendFile(path.join(__dirname, '..', 'public', 'index.html'));
-});
-
 // 获取所有对阵信息
 app.get('/api/matches', (req, res) => {
   res.json(MATCHES);
@@ -524,6 +516,14 @@ app.get('/api/teams', (req, res) => {
 // 健康检查
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+// 安全：自定义 404 — 不暴露技术栈（必须放在所有 /api 路由之后）
+app.use((req, res) => {
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: '接口不存在' });
+  }
+  res.status(404).sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 // ===== 数据 =====
